@@ -12,9 +12,9 @@ dotenv.config()
 
 const app = express()
 
-app.set("trust proxy",1)
+// app.set("trust proxy",1)
 
-app.use(cors({credentials: true, origin: 'http://localhost:3000'}))
+app.use(cors())
 
 const connect=() =>{
     mongoose.connect(process.env.MONGO).then(()=>{
