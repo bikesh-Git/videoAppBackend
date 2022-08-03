@@ -14,7 +14,7 @@ const app = express()
 
 // app.set("trust proxy",1)
 
-app.use(cors())
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}))
 
 const connect=() =>{
     mongoose.connect(process.env.MONGO).then(()=>{
