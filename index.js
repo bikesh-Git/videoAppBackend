@@ -12,9 +12,9 @@ dotenv.config()
 
 const app = express()
 
-// app.set("trust proxy",1)
+app.set("trust proxy",1)
 
-app.use(cors())
+
 
 const connect=() =>{
     mongoose.connect(process.env.MONGO).then(()=>{
@@ -26,6 +26,7 @@ const connect=() =>{
 
 app.use(cookieParser())  
 app.use(express.json())
+app.use(cors({credentials:true}))
 app.use("/api/auth",authRoutes)
 app.use("/api/users",userRoutes)
 app.use("/api/videos",videoRoutes)
@@ -42,5 +43,5 @@ app.use((err,req,res,next)=>{
 
 app.listen(process.env.PORT || 3001,()=>{
     connect()
-    console.log("connected to server")
+    console.log("connected to server," + process.env.PORT)
 })
