@@ -12,8 +12,8 @@ dotenv.config()
 
 const app = express()
 
-app.set("trust proxy",1)
-
+// app.set("trust proxy",1)
+app.use(cors({credentials:true , origin:"*"}))
 
 
 const connect=() =>{
@@ -26,7 +26,6 @@ const connect=() =>{
 
 app.use(cookieParser())  
 app.use(express.json())
-app.use(cors({credentials:true , origin:"*"}))
 app.use("/api/auth",authRoutes)
 app.use("/api/users",userRoutes)
 app.use("/api/videos",videoRoutes)
