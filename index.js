@@ -13,7 +13,7 @@ dotenv.config()
 const app = express()
 
 // app.set("trust proxy",1)
-app.use(cors({credentials:true , origin:true}))
+app.use(cors({credentials:true , origin:"*"}))
 
 
 const connect=() =>{
